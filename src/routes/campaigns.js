@@ -1,12 +1,12 @@
 const express = require('express');
 const campaignController = require('../controllers/campaignController');
-const authMiddleware = require('../middleware/auth');
+const { ensureAuthenticated } = require('../middleware/authMiddleware');
 const upload = require('../middleware/upload'); // Para upload de ficheiros
 
 const router = express.Router();
 
 // Aplicar middleware de autenticação em todas as rotas
-router.use(authMiddleware.ensureAuthenticated);
+router.use(ensureAuthenticated);
 
 // Obter todas as campanhas do utilizador autenticado
 router.get('/', campaignController.listCampaigns);
