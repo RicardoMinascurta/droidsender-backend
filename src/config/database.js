@@ -10,8 +10,8 @@ if (!process.env.DATABASE_URL) {
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   // Configurações adicionais do pool podem ser adicionadas aqui, se necessário
-  // Exemplo para produção com SSL:
-  // ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  // Ativa SSL para produção (ex: Heroku)
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
 // Tenta conectar para verificar a configuração
